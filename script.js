@@ -126,12 +126,13 @@
      ============================================================ */
 
   // ─────────────────────────────────────────────────────────────
-  // REPLACE_WITH_YOUR_EMAIL: put your real address below.
+  // Enquiries are emailed here via FormSubmit.
   // NOTE: FormSubmit requires a one-time activation. The FIRST submission
-  // to a new email triggers a confirmation email — the form only delivers
-  // messages after you click that activation link.
+  // to this address triggers a confirmation email — the form only delivers
+  // messages after you click that activation link. To change the recipient,
+  // swap the address below.
   // ─────────────────────────────────────────────────────────────
-  var FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/REPLACE_WITH_YOUR_EMAIL";
+  var FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/isaiah.hui@redbeaconam.com";
 
   var form = document.getElementById("enquiryForm");
   var submitBtn = document.getElementById("submitBtn");
@@ -152,7 +153,6 @@
     var ok = true;
     var name = form.name.value.trim();
     var email = form.email.value.trim();
-    var message = form.message.value.trim();
 
     if (!name) { setFieldError("name", "Please enter your name."); ok = false; }
     else setFieldError("name", "");
@@ -161,9 +161,7 @@
     else if (!EMAIL_RE.test(email)) { setFieldError("email", "Please enter a valid email address."); ok = false; }
     else setFieldError("email", "");
 
-    if (!message) { setFieldError("message", "Please tell us a little about your enquiry."); ok = false; }
-    else setFieldError("message", "");
-
+    // Message is optional — keeping the form low-friction lifts conversions.
     return ok;
   }
 
@@ -175,7 +173,7 @@
 
   if (form) {
     // Clear an individual field error as the user corrects it
-    ["name", "email", "message"].forEach(function (id) {
+    ["name", "email"].forEach(function (id) {
       var el = form.querySelector("#" + id);
       if (el) el.addEventListener("input", function () { setFieldError(id, ""); });
     });
@@ -195,10 +193,9 @@
       var payload = {
         name: form.name.value.trim(),
         email: form.email.value.trim(),
-        phone: form.phone.value.trim(),
         interest: form.interest.value,
         message: form.message.value.trim(),
-        _subject: "New enquiry from Sterling & Vale website",
+        _subject: "New free-review request from Sterling & Vale website",
         _template: "table",
         _captcha: "false"
       };

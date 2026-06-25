@@ -4,6 +4,11 @@ A polished, responsive single-page marketing site for a fictional investment adv
 built with **vanilla HTML, CSS, and JavaScript** — no frameworks, no build tools, no external
 libraries (only Google Fonts).
 
+The page uses a berry/rose **pink** brand palette with a champagne accent, and is built as a
+**lead magnet**: every section ladders toward one action — claiming a free, no-obligation
+portfolio review via the enquiry form. It also ships on-page SEO basics (descriptive title +
+meta description, canonical, Open Graph/Twitter cards, and `FinancialService` JSON-LD).
+
 ## Preview
 
 ![Screenshot of the Sterling & Vale Advisory site](screenshot.png)
@@ -29,21 +34,22 @@ No server, install, or build step is required. Edit any file and refresh the bro
 
 ## Enquiry form setup (important)
 
-The form submits via **FormSubmit's AJAX endpoint**, so the page never redirects.
+The form submits via **FormSubmit's AJAX endpoint**, so the page never redirects. The recipient
+is the `FORMSUBMIT_ENDPOINT` constant in `script.js`:
 
-1. Open `script.js` and find the `FORMSUBMIT_ENDPOINT` constant marked `REPLACE_WITH_YOUR_EMAIL`:
+```js
+var FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/your@email.com";
+```
 
-   ```js
-   var FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/REPLACE_WITH_YOUR_EMAIL";
-   ```
+To change who receives enquiries, swap the address there.
 
-   Replace `REPLACE_WITH_YOUR_EMAIL` with your real email, e.g.
-   `https://formsubmit.co/ajax/you@example.com`.
-
-2. **One-time activation:** the *first* submission to a new address triggers a FormSubmit
-   confirmation email. The form only delivers messages **after** you click that activation link.
-
+**One-time activation:** the *first* submission to a new address triggers a FormSubmit
+confirmation email. The form only delivers messages **after** you click that activation link.
 Once activated, submissions arrive in your inbox (formatted as a table) with no page redirect.
+
+> **Note:** with FormSubmit's AJAX endpoint the recipient address is visible in the public
+> client-side source. To avoid exposing it, use FormSubmit's hashed token endpoint instead
+> (`https://formsubmit.co/ajax/<your-token>`).
 
 ## Deployment
 

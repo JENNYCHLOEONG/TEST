@@ -3,19 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sterling &amp; Vale Advisory — Long-Term Wealth Management</title>
+
+  <!-- ============================ SEO ============================ -->
+  <title>Wealth Management &amp; Financial Advisors | Sterling &amp; Vale</title>
   <meta
     name="description"
-    content="Sterling & Vale Advisory provides calm, considered wealth management for professionals and families seeking to grow and protect what matters." />
+    content="Independent wealth management for professionals and families. Claim a free, no-obligation portfolio review from Sterling &amp; Vale Advisory — we reply within one business day." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#2A0A1E" />
+  <link rel="canonical" href="https://JENNYCHLOEONG.github.io/TEST/" />
 
-  <!-- Google Fonts: Playfair Display (headings) + Inter (body) -->
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sterling &amp; Vale Advisory" />
+  <meta property="og:title" content="Free portfolio review — Sterling &amp; Vale Advisory" />
+  <meta property="og:description" content="Independent, long-term wealth management for professionals and families. Claim your complimentary portfolio review — no obligation." />
+  <meta property="og:url" content="https://JENNYCHLOEONG.github.io/TEST/" />
+  <meta property="og:image" content="https://JENNYCHLOEONG.github.io/TEST/screenshot.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free portfolio review — Sterling &amp; Vale Advisory" />
+  <meta name="twitter:description" content="Independent, long-term wealth management. Claim your complimentary, no-obligation portfolio review." />
+  <meta name="twitter:image" content="https://JENNYCHLOEONG.github.io/TEST/screenshot.png" />
+
+  <!-- Inline SVG favicon (aubergine seal, no extra request) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A0A1E'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23D9B779' text-anchor='middle'%3ES%26V%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Playfair Display (display, + italic for accents) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
     rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Structured data: FinancialService + the free-review offer + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FinancialService",
+        "@id": "https://JENNYCHLOEONG.github.io/TEST/#firm",
+        "name": "Sterling & Vale Advisory",
+        "description": "Independent wealth management and financial advisory for professionals and families seeking calm, long-term planning.",
+        "url": "https://JENNYCHLOEONG.github.io/TEST/",
+        "image": "https://JENNYCHLOEONG.github.io/TEST/screenshot.png",
+        "priceRange": "$$$",
+        "areaServed": "United Kingdom",
+        "knowsAbout": ["Wealth planning", "Retirement strategy", "Portfolio management", "Estate planning"],
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "GBP",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Complimentary portfolio review",
+              "description": "A free, no-obligation second opinion on your current allocation, risks, and opportunities."
+            }
+          },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wealth Planning" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Retirement Strategy" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Portfolio Management" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate Planning" } }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://JENNYCHLOEONG.github.io/TEST/#website",
+        "url": "https://JENNYCHLOEONG.github.io/TEST/",
+        "name": "Sterling & Vale Advisory",
+        "publisher": { "@id": "https://JENNYCHLOEONG.github.io/TEST/#firm" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- ============================ NAVBAR ============================ -->
@@ -38,10 +101,10 @@
       </button>
 
       <ul class="nav-menu" id="navMenu">
-        <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Free review</a></li>
       </ul>
     </nav>
   </header>
@@ -53,10 +116,21 @@
         <p class="hero-eyebrow">Wealth Management &amp; Advisory</p>
         <h1 id="hero-heading">Grow and protect<br />what matters</h1>
         <p class="hero-sub">
-          Thoughtful, long-term financial planning for professionals and families.
-          We help you build lasting wealth — and the confidence that comes with it.
+          Independent, long-term financial planning for professionals and families.
+          Start with a free portfolio review — a clear second opinion on where your
+          money stands, with no obligation and no jargon.
         </p>
-        <a href="#contact" class="btn btn-primary btn-lg">Book a Consultation</a>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary btn-lg">Book my free portfolio review</a>
+          <a href="#services" class="hero-link">See what we do <span aria-hidden="true">→</span></a>
+        </div>
+
+        <ul class="hero-trust" aria-label="Why clients choose us">
+          <li>Independent &amp; fee-transparent</li>
+          <li>No obligation</li>
+          <li>Reply within one business day</li>
+        </ul>
 
         <ul class="hero-stats" aria-label="Firm highlights">
           <li>
@@ -95,7 +169,7 @@
     </section>
 
     <!-- ============================ SERVICES ============================ -->
-    <section class="services section" aria-labelledby="services-heading">
+    <section class="services section" id="services" aria-labelledby="services-heading">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">What we do</p>
@@ -151,6 +225,17 @@
             <p>Preserve and pass on your legacy with clarity and care.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ============================ MID-PAGE CTA BAND ============================ -->
+    <section class="cta-band" aria-labelledby="cta-band-heading">
+      <div class="container cta-band-inner">
+        <div>
+          <h2 id="cta-band-heading">Not sure where to start?</h2>
+          <p>Get a free, no-obligation portfolio review — a clear second opinion on how your money is working today.</p>
+        </div>
+        <a href="#contact" class="btn btn-gold btn-lg">Book my free review</a>
       </div>
     </section>
 
@@ -233,65 +318,83 @@
       </div>
     </section>
 
-    <!-- ============================ ENQUIRY FORM ============================ -->
+    <!-- ============================ ENQUIRY / LEAD MAGNET ============================ -->
     <section class="contact section" id="contact" aria-labelledby="contact-heading">
       <div class="container contact-inner">
-        <div class="contact-intro">
-          <p class="eyebrow">Get in touch</p>
-          <h2 id="contact-heading">Book a consultation</h2>
-          <p>
-            Tell us a little about your goals and we'll arrange an introductory conversation —
-            no obligation, no jargon. We typically respond within one business day.
+        <!-- The offer: this is the page's signature moment -->
+        <div class="offer">
+          <p class="eyebrow">Your free review</p>
+          <h2 id="contact-heading">Claim your complimentary portfolio review</h2>
+          <p class="offer-lead">
+            Tell us a little about your goals and we'll prepare a clear, written second opinion —
+            tailored to you, with no obligation and no sales pitch.
           </p>
+
+          <ul class="offer-benefits">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              A second opinion on how your money is currently allocated
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              A plain-English summary of the risks and opportunities we spot
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              Next steps tailored to your goals — only if you want them
+            </li>
+          </ul>
+
+          <p class="offer-social">
+            <strong>Trusted by 300+ families</strong> · 98% client retention · independent advice
+          </p>
+          <p class="offer-trust">Your details are private and never shared. We typically reply within one business day.</p>
         </div>
 
         <!--
-          FormSubmit AJAX form.
-          NOTE: FormSubmit requires a one-time activation. The very first submission to a new
-          email address triggers a confirmation email; the form only delivers messages after
-          you click that activation link. Drop your address into script.js (REPLACE_WITH_YOUR_EMAIL).
+          FormSubmit AJAX form. Enquiries are emailed to the address set in script.js
+          (FORMSUBMIT_ENDPOINT). NOTE: FormSubmit requires a one-time activation — the very
+          first submission triggers a confirmation email, and the form only delivers messages
+          after that activation link is clicked.
         -->
-        <form class="enquiry-form card" id="enquiryForm" novalidate>
+        <form class="enquiry-form card" id="enquiryForm" aria-label="Request your free portfolio review" novalidate>
+          <p class="form-title">Request your review</p>
+
           <!-- Honeypot: kept empty & hidden via CSS to trap bots -->
           <input type="text" name="_honey" id="honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="field">
-            <label for="name">Full Name <span class="req" aria-hidden="true">*</span></label>
+            <label for="name">Full name <span class="req" aria-hidden="true">*</span></label>
             <input type="text" id="name" name="name" autocomplete="name" required />
             <small class="field-error" data-error-for="name"></small>
           </div>
 
-          <div class="field-row">
-            <div class="field">
-              <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
-              <input type="email" id="email" name="email" autocomplete="email" required />
-              <small class="field-error" data-error-for="email"></small>
-            </div>
-            <div class="field">
-              <label for="phone">Phone <span class="optional">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel" />
-            </div>
+          <div class="field">
+            <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+            <small class="field-error" data-error-for="email"></small>
           </div>
 
           <div class="field">
-            <label for="interest">Investment interest</label>
+            <label for="interest">What's on your mind? <span class="optional">(optional)</span></label>
             <select id="interest" name="interest">
-              <option value="Wealth Planning">Wealth Planning</option>
+              <option value="A general portfolio review">A general portfolio review</option>
+              <option value="Wealth Planning">Wealth planning</option>
               <option value="Retirement">Retirement</option>
-              <option value="Portfolio Management">Portfolio Management</option>
-              <option value="Estate Planning">Estate Planning</option>
-              <option value="Other">Other</option>
+              <option value="Portfolio Management">Portfolio management</option>
+              <option value="Estate Planning">Estate planning</option>
+              <option value="Other">Something else</option>
             </select>
           </div>
 
           <div class="field">
-            <label for="message">Message / enquiry <span class="req" aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-            <small class="field-error" data-error-for="message"></small>
+            <label for="message">Anything you'd like us to know? <span class="optional">(optional)</span></label>
+            <textarea id="message" name="message" rows="4" placeholder="A sentence or two is plenty — what would you like a second opinion on?"></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary" id="submitBtn">Send Enquiry</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Book my review</button>
 
+          <p class="form-fineprint">Free · no obligation · reply within one business day</p>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
 
@@ -300,8 +403,8 @@
           <span class="success-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
           </span>
-          <h3>Thank you</h3>
-          <p>Thanks — we'll be in touch within one business day.</p>
+          <h3>Review requested</h3>
+          <p>Thanks — your free portfolio review is on its way. We'll be in touch within one business day.</p>
         </div>
       </div>
     </section>
@@ -315,10 +418,10 @@
         <p class="footer-tagline">Calm, considered wealth management for the long term.</p>
       </div>
       <nav class="footer-links" aria-label="Footer">
-        <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact">Free review</a>
       </nav>
     </div>
     <div class="container footer-base">
