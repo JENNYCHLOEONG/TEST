@@ -1,105 +1,62 @@
-# Sterling & Vale Advisory — Single-page Marketing Site
+# Sterling & Vale Advisory — One-Page Website
 
-This repository contains a simple, vanilla HTML/CSS/JS marketing website for a
-fictional investment advisory firm, Sterling & Vale Advisory.
+A polished, responsive single-page marketing site for a fictional investment advisory firm,
+built with **vanilla HTML, CSS, and JavaScript** — no frameworks, no build tools, no external
+libraries (only Google Fonts).
 
 ## Preview
 
 ![Screenshot of the Sterling & Vale Advisory site](screenshot.png)
 
-> Live site: https://JENNYCHLOEONG.github.io/TEST/
-
-Contents
-- `index.html` — the full site markup (hero, about, services, testimonials, contact).
-- `styles.css` — mobile-first styling and design tokens.
-- `script.js` — mobile menu, testimonial carousel, and enquiry form handler.
-- `.github/workflows/deploy.yml` — GitHub Actions workflow for deploying to GitHub Pages.
-
-Quick start
-
-1. Open the site locally by opening `index.html` in your browser.
-
-   - On Windows, run:
-
-     Start-Process .\index.html
-
-2. Edit files and refresh the browser — no build step required.
-
-Enquiry form
-
-The enquiry form posts to FormSubmit via AJAX. See `script.js` for the
-`FORMSUBMIT_ENDPOINT` constant. Replace the placeholder email and activate
-the address via the FormSubmit confirmation link on first submit.
-
-Deployment
-
-This repo includes a GitHub Actions workflow at
-.github/workflows/deploy.yml that uploads the site artifact and deploys to
-GitHub Pages on pushes to `main`.
-
-- Live site: https://JENNYCHLOEONG.github.io/TEST
-
-To add, commit, and push this README:
-
-```
-git add README.md
-git commit -m "Add README"
-git push origin HEAD
-```
-
-If `git push` fails because no remote is configured, add a remote and push:
-
-```
-git remote add origin git@github.com:YOUR_USERNAME/YOUR_REPO.git
-git push -u origin main
-```
-
-License
-
-No license specified. Add a `LICENSE` file if you want to set terms.
-# Sterling & Vale Advisory — One-Page Website
-
-A polished, responsive one-page investment advisory site built with **vanilla HTML, CSS, and
-JavaScript** — no frameworks, no build tools, no external libraries (only Google Fonts).
+> **Live site:** https://JENNYCHLOEONG.github.io/TEST/
 
 ## Files
-- `index.html` — markup (navbar, hero, about, services, testimonials, enquiry form, footer)
-- `styles.css` — design system, responsive layout, mobile hamburger menu, carousel & form styles
-- `script.js` — mobile menu, testimonial carousel, footer year, and the FormSubmit AJAX handler
 
-## Run it
+- `index.html` — full markup: navbar, hero, about, services, testimonials, enquiry form, footer
+- `styles.css` — mobile-first design system, responsive layout, hamburger menu, carousel & form styles
+- `script.js` — mobile menu, testimonial carousel, footer year, and the FormSubmit AJAX handler
+- `.github/workflows/deploy.yml` — GitHub Actions workflow that deploys to GitHub Pages on push to `main`
+
+## Run it locally
+
 Just open `index.html` in a browser — double-click it, or from PowerShell:
 
 ```powershell
 Start-Process .\index.html
 ```
 
-No server or install step is required.
+No server, install, or build step is required. Edit any file and refresh the browser.
 
-## Wiring up the enquiry form (important)
+## Enquiry form setup (important)
 
 The form submits via **FormSubmit's AJAX endpoint**, so the page never redirects.
 
-1. Open `script.js` and find the line marked `REPLACE_WITH_YOUR_EMAIL`:
+1. Open `script.js` and find the `FORMSUBMIT_ENDPOINT` constant marked `REPLACE_WITH_YOUR_EMAIL`:
 
    ```js
    var FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/REPLACE_WITH_YOUR_EMAIL";
    ```
 
-   Replace `REPLACE_WITH_YOUR_EMAIL` with your real email address, e.g.
+   Replace `REPLACE_WITH_YOUR_EMAIL` with your real email, e.g.
    `https://formsubmit.co/ajax/you@example.com`.
 
-2. **One-time activation:** FormSubmit requires a one-time confirmation. The *very first*
-   submission to a new email address triggers a confirmation email from FormSubmit. The form
-   only delivers messages **after** you click the activation link in that email.
+2. **One-time activation:** the *first* submission to a new address triggers a FormSubmit
+   confirmation email. The form only delivers messages **after** you click that activation link.
 
-That's it — once activated, submissions arrive in your inbox (formatted as a table), with no
-page redirect.
+Once activated, submissions arrive in your inbox (formatted as a table) with no page redirect.
+
+## Deployment
+
+Pushes to `main` trigger `.github/workflows/deploy.yml`, which uploads the site and publishes it
+to GitHub Pages at **https://JENNYCHLOEONG.github.io/TEST/**.
 
 ## Notes
-- Honeypot field (`_honey`) is included and hidden via CSS to reduce spam.
-- Client-side validation runs (required fields + email regex) before any network request.
+
+- Honeypot field (`_honey`) is hidden via CSS to reduce spam.
+- Client-side validation (required fields + email regex) runs before any network request.
 - Fully responsive (mobile-first), keyboard-accessible, and respects `prefers-reduced-motion`.
-- This site is fictional and for informational/demo purposes only; it does not constitute
-  financial advice.
-# TEST
+- This site is fictional and for demo purposes only; it does not constitute financial advice.
+
+## License
+
+No license specified. Add a `LICENSE` file if you want to set terms.
