@@ -761,6 +761,58 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ============================================================
+   Success celebration — floating balloons
+   ============================================================ */
+.balloon-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 300; /* above the WhatsApp widget (200) */
+  pointer-events: none;
+  overflow: hidden;
+}
+.balloon {
+  position: absolute;
+  bottom: -18vh;
+  border-radius: 50% 50% 48% 48% / 56% 56% 44% 44%;
+  opacity: 0;
+  box-shadow: inset -5px -7px 0 rgba(0, 0, 0, 0.08);
+  animation-name: balloon-rise;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  will-change: transform, opacity;
+}
+/* Knot at the base of the balloon */
+.balloon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 7px;
+  height: 7px;
+  margin: -2px 0 0 -3.5px;
+  border-radius: 50%;
+  background: inherit;
+}
+/* String */
+.balloon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 4px);
+  width: 1px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.18);
+  transform: translateX(-0.5px);
+}
+@keyframes balloon-rise {
+  0%   { transform: translateY(0) translateX(0) rotate(-4deg); opacity: 0; }
+  12%  { opacity: 0.95; }
+  50%  { transform: translateY(-65vh) translateX(2.5vw) rotate(4deg); }
+  100% { transform: translateY(-130vh) translateX(-1.5vw) rotate(-3deg); opacity: 0.95; }
+}
+
+/* ============================================================
    WhatsApp floating widget
    ============================================================ */
 .wa-widget {

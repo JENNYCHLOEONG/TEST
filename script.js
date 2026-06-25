@@ -171,6 +171,64 @@
     statusEl.classList.toggle("error", Boolean(isError));
   }
 
+  /* ---------- Success celebration: voice + balloons ---------- */
+  var SUCCESS_MESSAGE =
+    "Hurray, thank you for your submission, we will get back to you in 1 business day.";
+
+  function speakThankYou() {
+    try {
+      if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") return;
+      // The submit click is a user gesture, so speech is allowed to start.
+      window.speechSynthesis.cancel();
+      var utter = new SpeechSynthesisUtterance(SUCCESS_MESSAGE);
+      utter.lang = "en-US";
+      utter.rate = 1;
+      utter.pitch = 1.1;
+      utter.volume = 1;
+      window.speechSynthesis.speak(utter);
+    } catch (err) {
+      /* Speech unsupported or blocked — fail silently. */
+    }
+  }
+
+  function launchBalloons() {
+    var layer = document.createElement("div");
+    layer.className = "balloon-layer";
+    layer.setAttribute("aria-hidden", "true");
+    document.body.appendChild(layer);
+
+    var colors = [
+      "var(--rose-600)", "var(--rose-400)", "var(--rose-800)",
+      "var(--champagne)", "#6D28D9", "#25D366"
+    ];
+    var TOTAL = 18;
+
+    for (var i = 0; i < TOTAL; i++) {
+      var balloon = document.createElement("span");
+      balloon.className = "balloon";
+      var size = 30 + Math.round(Math.random() * 26);
+      balloon.style.left = (Math.random() * 96 + 2) + "vw";
+      balloon.style.width = size + "px";
+      balloon.style.height = Math.round(size * 1.25) + "px";
+      balloon.style.background = colors[i % colors.length];
+      balloon.style.animationDuration = (4.2 + Math.random() * 3).toFixed(2) + "s";
+      balloon.style.animationDelay = (Math.random() * 0.9).toFixed(2) + "s";
+      layer.appendChild(balloon);
+    }
+
+    // Remove the layer once every balloon has finished rising.
+    window.setTimeout(function () {
+      if (layer.parentNode) layer.parentNode.removeChild(layer);
+    }, 9000);
+  }
+
+  function celebrateSuccess() {
+    speakThankYou();
+    // Skip the balloon animation for visitors who prefer reduced motion.
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) launchBalloons();
+  }
+
   if (form) {
     // Clear an individual field error as the user corrects it
     ["name", "email"].forEach(function (id) {
@@ -230,6 +288,8 @@
             successEl.hidden = false;
             successEl.scrollIntoView({ behavior: "smooth", block: "center" });
           }
+          // Celebrate: speak a thank-you and float balloons.
+          celebrateSuccess();
         })
         .catch(function () {
           setStatus(
