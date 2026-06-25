@@ -1,3 +1,62 @@
+# Sterling & Vale Advisory — Single-page Marketing Site
+
+This repository contains a simple, vanilla HTML/CSS/JS marketing website for a
+fictional investment advisory firm, Sterling & Vale Advisory.
+
+## Preview
+
+![Screenshot of the Sterling & Vale Advisory site](screenshot.png)
+
+> Live site: https://JENNYCHLOEONG.github.io/TEST/
+
+Contents
+- `index.html` — the full site markup (hero, about, services, testimonials, contact).
+- `styles.css` — mobile-first styling and design tokens.
+- `script.js` — mobile menu, testimonial carousel, and enquiry form handler.
+- `.github/workflows/deploy.yml` — GitHub Actions workflow for deploying to GitHub Pages.
+
+Quick start
+
+1. Open the site locally by opening `index.html` in your browser.
+
+   - On Windows, run:
+
+     Start-Process .\index.html
+
+2. Edit files and refresh the browser — no build step required.
+
+Enquiry form
+
+The enquiry form posts to FormSubmit via AJAX. See `script.js` for the
+`FORMSUBMIT_ENDPOINT` constant. Replace the placeholder email and activate
+the address via the FormSubmit confirmation link on first submit.
+
+Deployment
+
+This repo includes a GitHub Actions workflow at
+.github/workflows/deploy.yml that uploads the site artifact and deploys to
+GitHub Pages on pushes to `main`.
+
+- Live site: https://JENNYCHLOEONG.github.io/TEST
+
+To add, commit, and push this README:
+
+```
+git add README.md
+git commit -m "Add README"
+git push origin HEAD
+```
+
+If `git push` fails because no remote is configured, add a remote and push:
+
+```
+git remote add origin git@github.com:YOUR_USERNAME/YOUR_REPO.git
+git push -u origin main
+```
+
+License
+
+No license specified. Add a `LICENSE` file if you want to set terms.
 # Sterling & Vale Advisory — One-Page Website
 
 A polished, responsive one-page investment advisory site built with **vanilla HTML, CSS, and
