@@ -7,7 +7,8 @@ libraries (only Google Fonts).
 The page uses a berry/rose **pink** brand palette with a champagne accent, and is built as a
 **lead magnet**: every section ladders toward one action — claiming a free, no-obligation
 portfolio review via the enquiry form. It also ships on-page SEO basics (descriptive title +
-meta description, canonical, Open Graph/Twitter cards, and `FinancialService` JSON-LD).
+meta description, canonical, Open Graph/Twitter cards, and `FinancialService` JSON-LD with
+`sameAs` social-profile links), plus footer social icons (LinkedIn, X, Facebook).
 
 ## Preview
 

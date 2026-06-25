@@ -307,4 +307,79 @@
       if (waWidget.classList.contains("wa-open") && !waWidget.contains(e.target)) closePanel();
     });
   }
+
+  /* ============================================================
+     Social share strip
+     ============================================================ */
+  var SHARE_URL  = "https://JENNYCHLOEONG.github.io/TEST/";
+  var SHARE_TEXT = "Sterling & Vale Advisory offer a free, no-obligation portfolio review. Worth a look if you want a calm, independent second opinion on your finances.";
+  var SHARE_SUBJECT = "Free portfolio review from Sterling & Vale Advisory";
+
+  var shareLinkedIn  = document.getElementById("shareLinkedIn");
+  var shareX         = document.getElementById("shareX");
+  var shareWhatsApp  = document.getElementById("shareWhatsApp");
+  var shareEmail     = document.getElementById("shareEmail");
+  var shareCopy      = document.getElementById("shareCopy");
+  var shareCopyLabel = document.getElementById("shareCopyLabel");
+
+  if (shareLinkedIn) {
+    shareLinkedIn.href =
+      "https://www.linkedin.com/sharing/share-offsite/?url=" +
+      encodeURIComponent(SHARE_URL);
+  }
+
+  if (shareX) {
+    shareX.href =
+      "https://twitter.com/intent/tweet?url=" +
+      encodeURIComponent(SHARE_URL) +
+      "&text=" +
+      encodeURIComponent(SHARE_TEXT);
+  }
+
+  if (shareWhatsApp) {
+    shareWhatsApp.href =
+      "https://wa.me/?text=" +
+      encodeURIComponent(SHARE_TEXT + " " + SHARE_URL);
+  }
+
+  if (shareEmail) {
+    shareEmail.href =
+      "mailto:?subject=" +
+      encodeURIComponent(SHARE_SUBJECT) +
+      "&body=" +
+      encodeURIComponent(SHARE_TEXT + "\n\n" + SHARE_URL);
+  }
+
+  if (shareCopy && shareCopyLabel) {
+    shareCopy.addEventListener("click", function () {
+      if (!navigator.clipboard) {
+        // Fallback for older browsers: select a temporary textarea
+        var ta = document.createElement("textarea");
+        ta.value = SHARE_URL;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch (err) { /* silent */ }
+        document.body.removeChild(ta);
+        showCopied();
+        return;
+      }
+      navigator.clipboard.writeText(SHARE_URL).then(showCopied, function () {
+        // If clipboard write is rejected (e.g. no user gesture), do nothing
+      });
+    });
+
+    function showCopied() {
+      shareCopyLabel.textContent = "Copied!";
+      shareCopy.setAttribute("data-copied", "true");
+      shareCopy.setAttribute("aria-label", "Link copied to clipboard");
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.setTimeout(function () {
+        shareCopyLabel.textContent = "Copy link";
+        shareCopy.removeAttribute("data-copied");
+        shareCopy.setAttribute("aria-label", "Copy page link");
+      }, reduceMotion ? 800 : 2000);
+    }
+  }
 })();
