@@ -132,7 +132,7 @@
   // messages after you click that activation link. To change the recipient,
   // swap the address below.
   // ─────────────────────────────────────────────────────────────
-  var FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/isaiah.hui@redbeaconam.com";
+  var FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/joln79@yahoo.co.uk";
 
   var form = document.getElementById("enquiryForm");
   var submitBtn = document.getElementById("submitBtn");
@@ -216,7 +216,13 @@
           if (!res.ok) throw new Error("Request failed with status " + res.status);
           return res.json();
         })
-        .then(function () {
+        .then(function (data) {
+          // FormSubmit returns HTTP 200 even on failure — the real result is in
+          // data.success ("true"/"false"). Only treat an explicit success as sent.
+          var sent = data && (data.success === true || String(data.success).toLowerCase() === "true");
+          if (!sent) {
+            throw new Error((data && data.message) || "Submission was not accepted.");
+          }
           // Success: hide the form, reveal the friendly confirmation.
           form.reset();
           form.hidden = true;
@@ -233,6 +239,72 @@
           submitBtn.disabled = false;
           submitBtn.textContent = originalLabel;
         });
+    });
+  }
+
+  /* ============================================================
+     WhatsApp floating widget
+     ============================================================ */
+  var WHATSAPP_NUMBER = "6596869598"; // +65 9686 9598 (no "+" or spaces)
+
+  // Suggested questions — each opens WhatsApp with the message pre-filled.
+  var WA_SUGGESTIONS = [
+    "I'd like a free portfolio review",
+    "How much does a consultation cost?",
+    "Help me plan for retirement",
+    "I have an estate planning question"
+  ];
+
+  var waWidget = document.getElementById("waWidget");
+  var waLauncher = document.getElementById("waLauncher");
+  var waPanel = document.getElementById("waPanel");
+  var waClose = document.getElementById("waClose");
+  var waChips = document.getElementById("waChips");
+
+  if (waWidget && waLauncher && waPanel) {
+    function waLink(text) {
+      return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+    }
+
+    // Build the suggested-question chips
+    if (waChips) {
+      WA_SUGGESTIONS.forEach(function (text) {
+        var a = document.createElement("a");
+        a.className = "wa-chip";
+        a.href = waLink(text);
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = text;
+        waChips.appendChild(a);
+      });
+    }
+
+    function openPanel() {
+      waWidget.classList.add("wa-open");
+      waPanel.hidden = false;
+      waLauncher.setAttribute("aria-expanded", "true");
+    }
+    function closePanel() {
+      waWidget.classList.remove("wa-open");
+      waPanel.hidden = true;
+      waLauncher.setAttribute("aria-expanded", "false");
+    }
+    function togglePanel() {
+      if (waWidget.classList.contains("wa-open")) closePanel();
+      else openPanel();
+    }
+
+    waLauncher.addEventListener("click", togglePanel);
+    if (waClose) waClose.addEventListener("click", closePanel);
+
+    // Close on Escape
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && waWidget.classList.contains("wa-open")) closePanel();
+    });
+
+    // Close when clicking outside the widget
+    document.addEventListener("click", function (e) {
+      if (waWidget.classList.contains("wa-open") && !waWidget.contains(e.target)) closePanel();
     });
   }
 })();
